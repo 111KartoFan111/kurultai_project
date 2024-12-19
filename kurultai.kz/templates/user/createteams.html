@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Kurultay</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@600&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana:wght@400&display=swap" />
+        <link rel="stylesheet" href="{{url_for('static',filename='css/user/teams.css')}}" />
+    </head>
+    <body>
+        <div class="main-container">
+            <div class="wrapper"></div>
+        <form method="POST"  action="{{ url_for('create_team') }}" class="team-form">
+            <div class="section">
+                <div class="section-2">
+                    <div class="box">
+                        <div class="wrapper-2">
+                            <span class="text">26.11.2024</span
+                            ><span class="text-2">13:00</span>
+                        </div>
+                        <span class="text-3">Название команды</span>
+                        <div class="section-3">
+                            <div class="box-2">
+                                <span class="text-4">Количество участников :</span
+                                ><span class="text-5">20</span>
+                            </div>
+                            <div class="section-4">
+                                <span class="text-6">Создатель :</span
+                                ><span class="text-7">{{ user.username }}</span>
+                            </div>
+                            <div class="group">
+                                <div class="box-3">
+                                    <div class="section-5">
+                                        <span class="text-8">Изменить</span>
+                                    </div>
+                                </div>
+                                <div class="group-2">
+                                    <div class="wrapper-3">
+                                        <span class="text-9">Удалить</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrapper-4">
+                    <div class="section-6">
+                        <div class="group-3">
+                            <div class="pic"></div>
+                            <span class="text-a">Название команды</span>
+                        </div>
+                        <div class="wrapper-5">
+                            <div class="section-7">
+                                <div class="group-4">
+                                    <input type="text" class="text-b" placeholder="Введите название команды" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <!-- Поле для выбора Спикера 1 -->
+                        <label for="speaker-1" class="form-label">Спикер 1:</label>
+                        <select id="speaker-1" name="speaker_1" class="input-field" required>
+                            {% for user in users %}
+                            <option value="{{ user.id }}">{{ user.username }}</option>
+                            {% endfor %}
+                        </select>
+
+                        <!-- Поле для выбора Спикера 2 -->
+                        <label for="speaker-2" class="form-label">Спикер 2:</label>
+                        <select id="speaker-2" name="speaker_2" class="input-field" required>
+                            {% for user in users %}
+                            <option value="{{ user.id }}">{{ user.username }}</option>
+                            {% endfor %}
+                        </select>
+                    <div class="group-8">
+                        <div class="group-9">
+                            <div class="group-a">
+                                <div class="group-b">
+                                    <input type="radio" id="russian-league" name="league" class="radio-input" />
+                                    <label for="russian-league" class="radio-label">
+                                        <span class="text-13">Русская лига</span>
+                                    </label>
+                                </div>
+                                <div class="wrapper-a">
+                                    <input type="radio" id="kazakh-league" name="league" class="radio-input" />
+                                    <label for="kazakh-league" class="radio-label">
+                                        <span class="text-14">Казахская лига</span>
+                                    </label>
+                                </div>
+                                <div class="group-c">
+                                    <input type="radio" id="english-league" name="league" class="radio-input" />
+                                    <label for="english-league" class="radio-label">
+                                        <span class="text-15">Английская лига</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wrapper-b">
+                            <span class="text-17">Выберите лигу</span>
+                        </div>
+                    </div>
+                    <div class="section-b">
+                        <div class="box-6">
+                            <span class="text-18">Сохранить</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="sliderbar">
+            <span class="text44">Kurultay </span>
+            <div class="wrapper44">
+                <a href="userprofile" class="section-244">
+                    <div class="box44"></div>
+                    <div class="box-244"><div class="img44"></div></div>
+                    <span class="text-244">Профиль</span>
+                </a>
+                <a href="create_team" class="box-344">
+                    <div class="wrapper-244"></div>
+                    <div class="section-344">
+                        <div class="section-444"><div class="img-244"></div></div>
+                    </div>
+                    <span class="text-344">Создать команду</span>
+                </a>
+                <a href="user_events" class="section-544">
+                    <div class="section-644"></div>
+                    <div class="section-744"><div class="pic44"></div></div>
+                    <span class="text-444">Мероприятие</span>
+                </a>
+                <a href="user_reports" class="box-444">
+                    <div class="box-544"></div>
+                    <div class="box-644"><div class="img-344"></div></div>
+                    <span class="text-544">Отчёты </span>
+                </a>
+            </div>
+            <div class="img-444"></div>
+            <div class="group-844"></div>
+            <div class="box-744">
+                <div class="pic-244"></div>
+                <div class="group-344">
+                    <span class="text-644">{{user.username}} </span
+                    ><span class="text-744">{{user.email}}</span>
+                </div>
+            </div>
+        </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Kurultay</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana:wght@400&display=swap" />
+        <link rel="stylesheet" href="{{url_for('static',filename='css/admin/usermanage.css')}}" />
+    </head>
+    <body>
+        <div class="main-container">
+            <div class="box"></div>
+            <div class="wrapper-844">
+                <div class="box-744">
+                    <span class="text-1244">Kurultay </span>
+                    <div class="group-744">
+                        <a href="adminprofile" class="section-944">
+                            <div class="section-44"><div class="img-244"></div></div>
+                            <div class="text-1344">Профиль</div>
+                        </a>
+                        <a href="creategame" class="group-944">
+                            <div class="section-b44"></div>
+                            <div class="section-c44"><div class="img-344"></div></div>
+                            <div class="text-1444">Создать игру</div>
+                        </a>
+                        <a href="usermanage" class="section-d44">
+                            <div class="group-a44"></div>
+                            <div class="group-b44">
+                                <div class="wrapper-944"><div class="img-444"></div></div>
+                            </div>
+                            <span class="text-1544">Управление учасниками</span>
+                        </a>
+                        <a href="newevent" class="box-844">
+                            <div class="wrapper-a44"></div>
+                            <div class="group-c44"><div class="img-544"></div></div>
+                            <span class="text-1644">Назначить мероприятие</span>
+                        </a>
+                        <a href="adminreports" class="section-e44">
+                            <div class="group-d44"></div>
+                            <div class="wrapper-b44"><div class="pic-344"></div></div>
+                            <span class="text-1744">Отчёты </span>
+                        </a>
+                    </div>
+                    <div class="pic-444"></div>
+                    <div class="section-f44">
+                        <div class="person-info44">
+                            <span class="text-1844">{{user.username}}</span>
+                        </div>
+                        <div class="person-info44">
+                            <span class="text-1944">{{ user.email }}</span>
+                        </div>
+                    </div>
+                    <div class="pic-544"></div>
+                </div>
+            </div>
+            <div class="wrapper-7">
+                <div class="section-9">
+                    <div class="group-6">
+                        <div class="section-a">
+                            <span class="text-9">Последний вход</span>
+                            <div class="section-b">
+                                <span class="text-a">Роль</span>
+                                <span class="text-b">Ранг</span>
+                            </div>
+                        </div>
+                        <span class="text-c">Name</span>
+                    </div>
+                    <div class="section-c">
+                        {% for user in users %}
+                        <form action="{{ url_for('delete_user', user_id=user.user_id) }}" method="POST" style="display:inline;">
+                            <input type="checkbox" class="section-d">
+                            <div class="section-e">
+                                <span class="text-d">{{user.username}}</span>
+                                <span class="text-e">{{user.email}}</span>
+                            </div>
+                            <span class="text-f">{{user.last_active}}</span>
+                            <span class="text-10">{{user.role}}</span>
+                            <span class="text-11">{{user.rank_name}}</span>
+                            <button type="submit" class="delete-btn">Удалить</button>
+                        </form>
+                        <form action="{{ url_for('change_rank', user_id=user.user_id) }}" method="POST" style="display:inline;">
+                            <input type="text" name="new_rank" placeholder="Новый ранг" />
+                            <button type="submit" class="change-rank-btn">Изменить ранг</button>
+                        </form>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

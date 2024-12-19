@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Kurultay</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@600&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana:wght@400&display=swap" />
+        <link rel="stylesheet" href="{{url_for('static',filename='css/admin/creategame.css')}}" />
+    </head>
+    <body>
+        <div class="main-container">
+            <div class="scrollable">
+            <form method="POST" action="{{ url_for('create_game') }}">
+                <!-- events-->
+                <div class="section">
+                    <div class="section-2">
+                        <div class="section-3">
+                            <div class="pic"></div>
+                            <span class="text">Тема игры</span>
+                        </div>
+                        <div class="section-4">
+                            <div class="box">
+                                <div class="section-5">
+                                    <input type="text" class="input-field" name="topic" placeholder="Введите тему игры" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-container">
+                        <label for="participants">Количество участников: </label>
+                        <input type="range" id="participants" name="max_participants" min="1" max="100" value="5" class="slider">
+                        <output id="participant-count">5</output>
+                    </div>
+                    <script>
+                        const slider = document.getElementById("participants");
+                        const countDisplay = document.getElementById("participant-count");
+                        slider.addEventListener("input", function() {
+                            countDisplay.textContent = slider.value;
+                        });
+                    </script>
+                    <div class="group-3">
+                        <div class="box-3">
+                            <div class="img-2"></div>
+                            <span class="text-7">Дата</span>
+                        </div>
+                        <div class="wrapper">
+                            <div class="group-4">
+                                <div class="group-5">
+                                    <input type="date" class="time" name="game_date" id="datePicker" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-4">
+                        <div class="section-a">
+                            <div class="img-3"></div>
+                            <span class="text-9">Время</span>
+                        </div>
+                        <div class="group-6">
+                            <div class="group-7">
+                                <div class="section-b">
+                                    <input type="time" name="game_time" id="timePicker" class="time" min="09:00" max="18:00" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-5">
+                        <div class="wrapper-2">
+                            <div class="img-4"></div>
+                            <span class="text-c">Место проведения</span>
+                        </div>
+                        <div class="group-8">
+                            <div class="group-9">
+                                <input type="text" class="input-field" name="location" placeholder="Введите место проведения игры" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper-3">
+                        <div class="section-d">
+                            <div class="img-5"></div>
+                            <span class="text-f">Судья</span>
+                        </div>
+                        <div class="box-6">
+                            <div class="box-7">
+                                <div class="input-wrapper">
+                                    <select id="judge" name="judge_id" class="input-field" required>
+                                        {% for user in users %}
+                                        <option value="{{ user.user_id }}">{{ user.username }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-e">
+                        <div class="section-f">
+                            <div class="img-6"></div>
+                            <span class="text-12">Выберите лигу</span>
+                        </div>
+                        <div class="section-10">
+                            <div class="section-11">
+                                <select name="league_id" class="input-field" required>
+                                    {% for league in leagues %}
+                                    <option value="{{ league.league_id }}">{{ league.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-8">
+                        <button type="submit" class="group-a">
+                            <div class="text-17">Сохранить</div>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            </div>
+            <div class="wrapper-6">
+                <div class="box-9">
+                    <div class="section-14">
+                        {% for game  in upcoming_games %}
+                        <div class="box-a" id="game-{{ game.id }}">
+                            <div class="section-15">
+                                <span class="text-18">{{ game.game_date }}</span>
+                                <span class="text-19">{{ game.game_time }}</span>
+                            </div>
+                            <span class="text-1a">{{ game.topic }}</span>
+                            <div class="section-16">
+                                <span class="text-1b">{{ game.location }}</span>
+                                <div class="group-b">
+                                    <span class="text-1c">Количество участников:</span>
+                                    <span class="text-1d">{{ game.max_participants }}</span>
+                                </div>
+                                <div class="section-17">
+                                    <span class="text-1e">Судья:</span>
+                                    <span class="text-1f">{{ game.judge.username }}</span>
+                                </div>
+                                <div class="group-c">
+                                    <div class="wrapper-7">
+                                        <button onclick="editGame({{ game.game_id }})" class="wrapper-8">
+                                            <div class="text-20">Изменить</div>
+                                        </button>
+                                    </div>
+                                    <div class="wrapper-9">
+                                        <button onclick="deleteGame({{ game.game_id }})" class="group-d">
+                                            <div class="text-21">Удалить</div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <!-- sidebar-->
+                <div class="wrapper-844">
+                    <div class="box-744">
+                        <span class="text-1244">Kurultay </span>
+                        <div class="group-744">
+                            <a href="adminprofile" class="section-944">
+                                <div class="section-44"><div class="img-244"></div></div>
+                                <div class="text-1344">Профиль</div>
+                            </a>
+                            <a href="creategame" class="group-944">
+                                <div class="section-b44"></div>
+                                <div class="section-c44"><div class="img-344"></div></div>
+                                <div class="text-1444">Создать игру</div>
+                            </a>
+                            <a href="usermanage" class="section-d44">
+                                <div class="group-a44"></div>
+                                <div class="group-b44">
+                                    <div class="wrapper-944"><div class="img-444"></div></div>
+                                </div>
+                                <span class="text-1544">Управление учасниками</span>
+                            </a>
+                            <a href="newevent" class="box-844">
+                                <div class="wrapper-a44"></div>
+                                <div class="group-c44"><div class="img-544"></div></div>
+                                <span class="text-1644">Назначить мероприятие</span>
+                            </a>
+                            <a href="adminreports" class="section-e44">
+                                <div class="group-d44"></div>
+                                <div class="wrapper-b44"><div class="pic-344"></div></div>
+                                <span class="text-1744">Отчёты </span>
+                            </a>
+                        </div>
+                        <div class="pic-444"></div>
+                        <div class="section-f44">
+                            <div class="person-info44">
+                                <span class="text-1844">{{user.username}}</span>
+                            </div>
+                            <div class="person-info44">
+                                <span class="text-1944">{{ user.email }}</span>
+                            </div>
+                        </div>
+                        <div class="pic-544"></div>
+                    </div>
+                </div>
+                <!-- endsidebar-->
+            </div>
+        </div>
+    </body>
+    <script>
+        function deleteGame(gameId) {
+            fetch(`/deletegame/${gameId}`, { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message) {
+                        alert(data.message);
+                        document.getElementById(`game-${gameId}`).remove();
+                    } else {
+                        alert(data.error);
+                    }
+                })
+                .catch(error => console.error('Ошибка при удалении:', error));
+        }
+
+        function editGame(gameId) {
+            const updatedData = {
+                topic: prompt('Введите новую тему:'),
+                max_participants: prompt('Введите новое количество участников:'),
+                game_date: prompt('Введите новую дату (ГГГГ-ММ-ДД):'),
+                game_time: prompt('Введите новое время (ЧЧ:ММ):'),
+                location: prompt('Введите новое место:'),
+            };
+            fetch(`/updategame/${gameId}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(updatedData),
+            })
+                .then(response => response.json())
+                .then(data => alert(data.message || data.error))
+                .catch(error => console.error('Ошибка при обновлении:', error));
+        }
+    </script>
+</html>

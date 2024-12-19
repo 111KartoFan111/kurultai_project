@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Kurultay</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana:wght@400&display=swap" />
+        <link rel="stylesheet" href="{{url_for('static',filename='css/admin/adminreports.css')}}" />
+    </head>
+    <body>
+        <div class="main-container">
+            <div class="group">
+                <div class="box">
+                    <div class="box-2"><span class="text">Последние игры</span></div>
+                    <div class="section">
+                        <div class="wrapper">
+                            <div class="wrapper-2">
+                                <span class="text-2">26.10.2024</span
+                                ><span class="text-3">14:08</span>
+                            </div>
+                            <span class="text-4">Тема</span>
+                            <div class="box-3">
+                                <form method="POST" action="/save">
+                                    <div class="box-4">
+                                        <span class="text-5">Лига :</span>
+                                        <input type="text" name="liga" value="Русская лига" required>
+                                    </div>
+                                    <div class="group-2">
+                                        <span class="text-7">Количество команд :</span>
+                                        <div name="team_count" value="4" required></div>
+                                    </div>
+                                    <div class="section-2">
+                                        <span class="text-9">Место проведения :</span>
+                                        <input type="text" name="location" value="C1.3.227" required>
+                                    </div>
+                                    <div class="box-5">
+                                        <span class="text-b">Судья :</span>
+                                        <input type="text" name="judge" value="Селин А." required>
+                                    </div>
+                                    <div class="group-3">
+                                        <span class="text-d">Победа :</span>
+                                        <input type="text" name="victory" value="Оппозиция" required>
+                                    </div>
+                                    <div class="wrapper-3">
+                                        <div class="wrapper-4">
+                                            <div class="group-4">
+                                                <button type="submit">Сохранить данные</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            {% if message %}
+                                <p>{{ message }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <button class="box-6">
+                        <span class="text-10">Загрузить отчёт </span>
+                        <div class="box-7"></div>
+                    </button>
+                </div>
+                <div class="box-8">
+                    <span class="text-11">Kurultay </span>
+                    <div class="wrapper-5">
+                        <a href="adminprofile" class="wrapper-6">
+                            <div class="group-5"></div>
+                            <div class="group-6"><div class="img"></div></div>
+                            <span class="text-12">Профиль</span>
+                        </a>
+                        <a href="creategame" class="wrapper-7">
+                            <div class="section-3"></div>
+                            <div class="box-9"><div class="pic"></div></div>
+                            <span class="text-13">Создать игру</span>
+                        </a>
+                        <a href="usermanage" class="wrapper-8">
+                            <div class="box-a"></div>
+                            <div class="box-b">
+                                <div class="wrapper-9"><div class="img-2"></div></div>
+                            </div>
+                            <span class="text-14">Управление учасниками</span>
+                        </a>
+                        <a href="newevent" class="box-c">
+                            <div class="wrapper-a"></div>
+                            <div class="section-4"><div class="pic-2"></div></div>
+                            <span class="text-15">Назначить мероприятие</span>
+                        </a>
+                        <a href="adminreports" class="wrapper-b">
+                            <div class="section-5"></div>
+                            <div class="box-d"><div class="img-3"></div></div>
+                            <span class="text-16">Отчёты </span>
+                        </a>
+                    </div>
+                    <div class="img-4"></div>
+                    <div class="section-6">
+                        <span class="text-17">{{user.username}}</span>
+                        <span class="text-18">{{user.email}}</span>
+                    </div>
+                    <div class="pic-3"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

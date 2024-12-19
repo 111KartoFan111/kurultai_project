@@ -1,0 +1,121 @@
+.frame-child {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 12px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    width: 315px;
+    height: 40px;
+}
+.div {
+    position: absolute;
+    top: calc(50% - 11px);
+    left: 13px;
+    line-height: 140%;
+}
+.rectangle-parent {
+    align-self: stretch;
+    position: relative;
+    height: 40px;
+}
+.frame-container {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 10px;
+}
+.div3 {
+    position: absolute;
+    top: 14px;
+    left: 78px;
+    color: #fff;
+    font-weight: 600;
+}
+.input-field {
+    width: 100%;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid #000;
+    font-size: 14px;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #000;
+    margin-bottom: 10px;
+}
+.input-field::placeholder {
+    color: #868686;
+    font-size: 14px;
+}
+.wrapper {
+    align-self: stretch;
+    position: relative;
+    border-radius: 8px;
+    background-color: #198c36;
+    border: 2px solid #122d1c;
+    box-sizing: border-box;
+    height: 50px;
+    width: 315px;
+    cursor: pointer;
+}
+.frame-wrapper1 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    color: #fff;
+}
+.frame-group {
+    position: absolute;
+    top: calc(50% - 150px);
+    left: calc(50% - 157.5px);
+    width: 315px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 20px 0px;
+    box-sizing: border-box;
+    gap: 20px;
+}
+.frame-wrapper {
+    position: absolute;
+    top: 158px;
+    left: 7px;
+    border-radius: 8px;
+    background-color: #fff;
+    width: 379px;
+    height: 360px;
+}
+.kurultay {
+    position: absolute;
+    top: calc(50% - 259px);
+    left: calc(50% - 266.5px);
+    font-size: 128px;
+    font-family: Italiana;
+    color: #f9c74f;
+    text-align: left;
+    text-shadow: 0px 18px 4px rgba(0, 0, 0, 0.25);
+}
+.frame-parent {
+    position: absolute;
+    top: 157px;
+    left: 419px;
+    width: 443px;
+    height: 518px;
+}
+.macbook-air-5 {
+    width: 100%;
+    position: relative;
+    background-color: #163a24;
+    height: 832px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 16px;
+    color: #868686;
+    font-family: Nunito;
+}
+

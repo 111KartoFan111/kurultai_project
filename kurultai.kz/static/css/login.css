@@ -1,0 +1,148 @@
+/* Стиль для полей ввода */
+.input-field {
+    width: 100%;                /* Поля должны занимать всю доступную ширину */
+    padding: 10px;              /* Отступы внутри поля */
+    margin: 10px 0;             /* Отступы между полями */
+    border: 1px solid #ccc;     /* Рамка вокруг поля */
+    border-radius: 5px;         /* Скругленные углы */
+    font-size: 16px;            /* Размер шрифта */
+}
+
+/* Стиль для кнопки */
+#frameContainer {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#frameContainer:hover {
+    background-color: #45a049;
+}
+
+/* Оставляем стили для других блоков */
+.frame-child {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 8px;
+    background-color: #fff;
+    width: 379px;
+    height: 240px;
+}
+
+.frame-item {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 12px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    width: 315px;
+    height: 40px;
+}
+
+.div {
+    position: absolute;
+    top: calc(50% - 11px);
+    left: 13px;
+    line-height: 140%;
+}
+
+.rectangle-group {
+    align-self: stretch;
+    position: relative;
+    height: 40px;
+}
+
+.frame-group {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.div2 {
+    position: static;
+    top: 14px;
+    left: 134px;
+    font-weight: 600;
+}
+
+.wrapper {
+    align-self: stretch;
+    position: relative;
+    border-radius: 8px;
+    background-color: #198c36;
+    border: 2px solid #122d1c;
+    box-sizing: border-box;
+    height: 50px;
+    cursor: pointer;
+    max-width: 100%;
+}
+
+.frame-wrapper {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    color: #fff;
+    margin-top: 10%;
+}
+
+.frame-parent {
+    position: absolute;
+    top: calc(50% - 110px);
+    left: calc(50% - 157.5px);
+    width: 315px;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.rectangle-parent {
+    position: absolute;
+    top: 158px;
+    left: 14px;
+    width: 379px;
+    height: 260px;
+}
+
+.macbook-air-1-inner {
+    position: absolute;
+    top: 118px;
+    left: 441px;
+    width: 450px;
+    height: 418px;
+}
+
+.kurultay {
+    position: absolute;
+    top: calc(50% - 333px);
+    left: calc(50% - 221px);
+    font-size: 128px;
+    font-family: Italiana;
+    color: #f9c74f;
+    text-align: left;
+    text-shadow: 0px 18px 4px rgba(0, 0, 0, 0.25);
+}
+
+.macbook-air-1 {
+    width: 100%;
+    position: relative;
+    background-color: #163a24;
+    height: 832px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 16px;
+    color: #868686;
+    font-family: Nunito;
+}

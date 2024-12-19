@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Kurultai</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana:wght@400&display=swap" />
+        <link rel="stylesheet" href="{{url_for('static',filename='css/user/events.css')}}" />
+    </head>
+    <body>
+        <div class="main-container">
+            <div class="section">
+                <div class="sliderbar">
+                    <span class="text44">Kurultay </span>
+                    <div class="wrapper44">
+                        <a href="userprofile" class="section-244">
+                            <div class="box44"></div>
+                            <div class="box-244">
+                            <div class="img44"></div></div>
+                            <span class="text-244">Профиль</span>
+                        </a>
+                        <a href="create_team" class="box-344">
+                            <div class="wrapper-244"></div>
+                            <div class="section-344">
+                                <div class="section-444"><div class="img-244"></div></div>
+                            </div>
+                            <span class="text-344">Создать команду</span>
+                        </a>
+                        <a href="user_events" class="section-544">
+                            <div class="section-644"></div>
+                            <div class="section-744"><div class="pic44"></div></div>
+                            <span class="text-444">Мероприятие</span>
+                        </a>
+                        <a href="user_reports" class="box-444">
+                            <div class="box-544"></div>
+                            <div class="box-644"><div class="img-344"></div></div>
+                            <span class="text-544">Отчёты </span>
+                        </a>
+                    </div>
+                    <div class="img-444"></div>
+                    <div class="group-844"></div>
+                    <div class="box-744">
+                        <div class="pic-244"></div>
+                        <div class="group-344">
+                            <span class="text-644">{{user.username}} </span
+                            ><span class="text-744">{{user.email}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="group">
+                    <div class="group-2">
+                        <div class="section-2">
+                            <span class="text">Регистрация на мероприятие</span>
+                        </div>
+                        {% for event in events %}
+                            <div class="box">
+                                <div class="wrapper">
+                                    <div class="wrapper-2">
+                                        <div class="wrapper-3">
+                                            <span class="text-2">{{ event.event_date.strftime('%d.%m.%Y') }}</span>
+                                            <span class="text-3">{{ event.event_date.strftime('%H:%M') }}</span>
+                                        </div>
+                                        <span class="text-4">{{ event.name }}</span>
+                                        <div class="section-3">
+                                            <div class="wrapper-4">
+                                                <span class="text-7">Зарегистрировалось:</span>
+                                                <span class="text-8">{{ event.registrations|length }}</span>
+                                            </div>
+                                            <div class="group-4">
+                                                <span class="text-9">Место проведения:</span>
+                                                <span class="text-a">{{ event.location }}</span>
+                                            </div>
+                                            <div class="section-4">
+                                                <span class="text-d">Организатор:</span>
+                                                <span class="text-e">{{ event.created_by }}</span>
+                                            </div>
+                                            <form method="POST">
+                                                <input type="hidden" name="event_id" value="{{ event.event_id }}">
+                                                <button type="submit" class="text-f">Зарегистрироваться</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

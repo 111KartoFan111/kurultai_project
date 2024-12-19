@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Kurultay</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana:wght@400&display=swap" />
+        <link rel="stylesheet" href="{{url_for('static',filename='css/admin/newevent.css')}}" />
+    </head>
+<body>
+    <div class="main-container">
+        <div class="scrollable">
+            <form method="POST" action="{{ url_for('new_event') }}">
+                <div class="section">
+                    <div class="section-2">
+                        <div class="section-3">
+                            <div class="pic"></div>
+                            <span class="text">Тема мероприятия</span>
+                        </div>
+                        <div class="section-4">
+                            <div class="box">
+                                <div class="section-5">
+                                    <input type="text" name="topic" class="input-field" placeholder="Введите тему игры" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-2">
+                        <div class="section-3">
+                            <div class="pic"></div>
+                            <span class="text">Описание</span>
+                        </div>
+                        <div class="section-4">
+                            <div class="box">
+                                <div class="section-5">
+                                    <input type="text" name="discription" class="input-field" placeholder="Введите описание игры" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group-3">
+                        <div class="box-3">
+                            <div class="img-2"></div>
+                            <span class="text-7">Дата</span>
+                        </div>
+                        <div class="wrapper">
+                            <div class="group-4">
+                                <div class="group-5">
+                                    <input type="date" class="time" name="event_date" id="datePicker" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-4">
+                        <div class="section-a">
+                            <div class="img-3"></div>
+                            <span class="text-9">Время</span>
+                        </div>
+                        <div class="group-6">
+                            <div class="group-7">
+                                <div class="section-b">
+                                    <input type="time" name="event_time" id="timePicker" class="time" min="09:00" max="18:00" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-5">
+                        <div class="wrapper-2">
+                            <div class="img-4"></div>
+                            <span class="text-c">Место проведения</span>
+                        </div>
+                        <div class="group-8">
+                            <div class="group-9">
+                                <input type="text" name="location" class="input-field" placeholder="Введите место проведения игры" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-5">
+                        <div class="wrapper-2">
+                            <div class="img-4"></div>
+                            <span class="text-c">Организатор</span>
+                        </div>
+                        <div class="group-8">
+                            <div class="group-9">
+                                <input type="text" name="created_by" class="input-field" placeholder="Введите организатора игры" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-8">
+                        <button type="submit" class="group-a">
+                            <div class="text-17">Сохранить</div>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+            <div class="wrapper-6">
+                <div class="box-9">
+                    <div class="section-14">
+                        {% for event in events %}
+                        <div class="box-a">
+                            <div class="section-15">
+                                <span class="text-18">{{ event.date }}</span>
+                                <span class="text-19">{{ event.time }}</span>
+                            </div>
+                            <span class="text-1a">{{ event.topic }}</span>
+                            <div class="section-16">
+                                <span class="text-1b">{{ event.location }}</span>
+                                <div class="section-17">
+                                    <span class="text-1e">Организатор:</span>
+                                    <span class="text-1f">{{ event.created_by }}</span>
+                                </div>
+                                <div class="group-c">
+                                    <form method="POST" action="{{ url_for('new_event') }}">
+                                        <!-- Поле для указания действия -->
+                                        <input type="hidden" name="action" id="action" value="">
+                                        <!-- Поле для идентификатора события -->
+                                        <input type="hidden" name="event_id" value="{{ event.event_id }}">
+                                        <div class="wrapper-7">
+                                            <button type="button" onclick="submitForm('stop')" class="wrapper-8">
+                                                <div class="text-20">Остановить</div>
+                                            </button>
+                                        </div>
+                                        <div class="wrapper-9">
+                                            <button type="button" onclick="submitForm('delete')" class="group-d">
+                                                <div class="text-21">Удалить</div>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="wrapper-844">
+                    <div class="box-744">
+                        <span class="text-1244">Kurultay </span>
+                        <div class="group-744">
+                            <a href="adminprofile" class="section-944">
+                                <div class="group-844"></div>
+                                <div class="section-44"><div class="img-244"></div></div>
+                                <div class="text-1344">Профиль</div>
+                            </a>
+                            <a href="creategame" class="group-944">
+                                <div class="section-b44"></div>
+                                <div class="section-c44"><div class="img-344"></div></div>
+                                <div class="text-1444">Создать игру</div>
+                            </a>
+                            <a href="usermanage" class="section-d44">
+                                <div class="group-a44"></div>
+                                <div class="group-b44">
+                                    <div class="wrapper-944"><div class="img-444"></div></div>
+                                </div>
+                                <span class="text-1544">Управление учасниками</span>
+                            </a>
+                            <a href="newevent" class="box-844">
+                                <div class="wrapper-a44"></div>
+                                <div class="group-c44"><div class="img-544"></div></div>
+                                <span class="text-1644">Назначить мероприятие</span>
+                            </a>
+                            <a href="adminreports" class="section-e44">
+                                <div class="group-d44"></div>
+                                <div class="wrapper-b44"><div class="pic-344"></div></div>
+                                <span class="text-1744">Отчёты </span>
+                            </a>
+                        </div>
+                        <div class="pic-444"></div>
+                        <div class="section-f44">
+                            <div class="person-info44">
+                                <span class="text-1844">{{user.username}}</span>
+                            </div>
+                            <div class="person-info44">
+                                <span class="text-1944">{{ user.email }}</span>
+                            </div>
+                        </div>
+                        <div class="pic-544"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+        <script>
+            function submitForm(action) {
+                // Устанавливаем значение действия в скрытое поле
+                document.getElementById('action').value = action;
+                // Отправляем форму
+                event.target.closest('form').submit();
+            }
+        </script>
+</html>

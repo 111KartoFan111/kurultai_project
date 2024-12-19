@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>kurultay</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;900&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana:wght@400&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" />
+        <link rel="stylesheet" href="{{url_for('static',filename='css/user/userprofile.css')}}" />
+    </head>
+    <body>
+        <div class="main-container">
+            <div class="section"></div>
+            <div class="group">
+                <span class="text">Kurultay </span>
+                <div class="wrapper">
+                    <div class="section-2">
+                        <div class="box"></div>
+                        <div class="box-2"><div class="img"></div></div>
+                        <span class="text-2">Профиль</span>
+                    </div>
+                    <a href="create_team" class="box-3">
+                        <div class="wrapper-2"></div>
+                        <div class="section-3">
+                            <div class="section-4"><div class="img-2"></div></div>
+                        </div>
+                        <span class="text-3">Создать команду</span>
+                    </a>
+                    <div class="section-5">
+                        <div class="section-6"></div>
+                        <div class="section-7"><div class="pic"></div></div>
+                        <span class="text-4">Мероприятие</span>
+                    </div>
+                    <div class="box-4">
+                        <div class="box-5"></div>
+                        <div class="box-6"><div class="img-3"></div></div>
+                        <span class="text-5">Отчёты </span>
+                    </div>
+                </div>
+                <div class="img-4"></div>
+                <div class="group-2"></div>
+                <div class="box-7">
+                    <div class="pic-2"></div>
+                    <div class="group-3">
+                        <span class="text-6">{{user.username}} </span
+                        ><span class="text-7">{{user.email}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="box-8">
+                <form method="POST" action="{{ url_for('user_profile') }}">
+                <div class="section-8">
+                    <div class="img-5"></div>
+                    <div class="box-9">
+                        <div class="wrapper-3">
+                            <span class="text-8">Group</span>
+                        </div>
+                        <input type="text" id="group_num" name="group_num" value="{{ user.group_num }}" class="group-9"/>
+                    </div>
+                    <div class="group-4">
+                        <span class="text-a">My email Address</span>
+                        <div class="section-9">
+                            <div class="img-6"></div>
+                            <div class="wrapper-5">
+                                <span class="text-b">{{ user.email }}</span>
+                                <span class="text-c">{{ user.last_active }}</span>
+                            </div>
+                            <div class="section-a">
+                                <div class="group-5"><div class="pic-3"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group-6"></div>
+                    <div class="box-a">
+                        <div class="section-b">
+                            <span class="text-d">{{ user.username }}</span>
+                            <span class="text-e">{{ user.email }}</span>
+                        </div>
+                    </div>
+                    <div class="section-c">
+                        <span class="text-f">Reset password</span>
+                        <div class="group-7"></div>
+                    </div>
+                    <button class="group-8">
+                        <span class="text-10" onclick="toggleEditForm()">Edit</span>
+                        <div class="section-d"></div>
+                    </button>
+                    <div class="wrapper-6">
+                        <span class="text-11">Full Name</span>
+                        <input type="text" name="full_name" id="full_name" value="{{ user.full_name }}" class="group-9"/>
+                    </div>
+                    <div class="section-e">
+                        <span class="text-13">Login</span>
+                        <input type="text" id="username" name="username" value="{{ user.username }}" class="group-9"/>
+                    </div>
+                    <div class="wrapper-7">
+                        <div class="group-b">
+                            <span class="text-15">Gender</span>
+                        </div>
+                        <input type="text" id="gender" name="gender" value="{{ user.gender }}" class="group-9"/>
+                    </div>
+                    <div class="group-c">
+                        <span class="text-17">Номер телефона</span>
+                        <input type="tel" name="phone_number" id="phone_num"  value="{{ user.phone_number }}" class="group-9" />
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </body>
+    <script>
+        function toggleEditForm() {
+            const form = document.getElementById('edit-form');
+            if (form.style.display === 'none') {
+                form.style.display = 'block';
+            } else {
+                form.style.display = 'none';
+            }
+        }
+    </script>
+</html>

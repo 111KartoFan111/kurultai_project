@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/register.css')}}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana:wght@400&display=swap" />
+</head>
+<body>
+    <div class="macbook-air-5">
+        <div class="frame-parent">
+            <div class="frame-wrapper">
+                <div class="frame-group">
+                    <!-- Форма регистрации -->
+                    <form action="/register" method="POST">
+                        <div class="frame-container">
+                            <div class="rectangle-parent">
+                                <input type="text" name="username" class="input-field" placeholder="Логин" required />
+                            </div>
+                            <div class="rectangle-parent">
+                                <input type="password" name="password" class="input-field" placeholder="Пароль не менее 8 символов" required />
+                            </div>
+                            <div class="rectangle-parent">
+                                <input type="email" name="email" class="input-field" placeholder="Email" required />
+                            </div>
+                            <div class="rectangle-parent">
+                                <input type="tel" name="phone" class="input-field" placeholder="Номер телефона" required />
+                            </div>
+                        </div>
+                            <!-- Обновленная кнопка для регистрации -->
+                            <div class="frame-wrapper1">
+                                <button type="submit" class="wrapper" id="frameContainer">
+                                    <!-- Используем стандартную кнопку -->
+                                    <div class="div3">Зарегистрироваться</div>
+                                </button>
+                            </div>
+                    </form>
+                </div>
+            </div>
+            <div class="kurultay">Kurultay</div>
+        </div>
+    </div>
+</body>
+</html>
